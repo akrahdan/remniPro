@@ -1,0 +1,118 @@
+topic: ~Lexicon()
+language: enu
+
+##############  ****** HUMAN concepts ******  #################
+
+############## Atomic Language Components
+concept:(article) [a an the]
+concept:(another) [another]
+concept:(ask) [want wants "asked for" needs said say wanted "ask for"]
+
+############## Proper Nouns 
+concept:(pepper) [pepper Pepper peppar Peppar]
+concept:(softbank) [softbank Softbank "soft bank" "Soft bank"]
+concept:(aldebaran) [aldebaran Aldebaran]
+concept:(nao) [nao Nao now Now]
+
+############## Robot-Oriented
+concept:(robot) [~pepper robot Robot ~nao]
+concept:(robot_3p) [you it "{~article} ~robot"]
+concept:(fav_word) [pickles robots aldebaran sloths ninjas cheese python batman programmers Linux]
+concept:(funny_word) [kangaroo potato moustache spam hairy]
+concept:(scary_noun) [monster bug virus mosquito goto "go to"]
+concept:(scary_plural) [water bombs monsters moisture bugs viruses swimming Microsoft microsoft puddles rain]
+concept:(scary_verb) [disassemble destroy submerge unplug decapitate tickle]
+
+############## Politeness
+concept:(thank_you) "["thank you" thanks] {"a lot"}"
+concept:(polite) [sorry please]
+
+############## Confirmation, Negation
+concept:(yes) [yes yeah indeed yep affirmative "good enough" definitely "{for} sure" alright "why not" ok okay certainly "very well" absolutely right exactly precisely perfect correct]
+concept:(no) ["{definitely absolutely} [no not]" nope "no way" never negative negatory "don't want" "not at all"]
+concept:(neg) [didn't "did not" couldn't "could not" "do not" don't]
+
+################ Introductions, greetings, hellos and goodbyes
+concept:(hello) [hello Hello hi Hi hey Hey]
+concept:(good_day) ["good [morning afternoon evening]"]
+concept:(whats_up) "["what's up" "what up" sup] {[bro sis buddy robot]}"
+concept:(greetings) [~hello ~good_day greetings Greetings ~whats_up]
+concept:(goodbye) [goodbye "good bye" "bye {bye}" "see [you ya] {later}" later cheers "so long" farewell ciao]
+concept:(how_are_you) ["how are you {doing}" "["how is" "how's"] it going"]
+
+################ Conversational Tools
+concept:(not_sure) ["{I} think so" maybe "{[I'm Im]} not sure" "{I} [don't "do not"] know" perhaps]
+concept:(pardon) ["{wait} what {did} {~robot_3p} {~ask}" "repeat {the} {question}" pardon "{can} {~robot_3p} say {that} again" "I ~neg hear {what} {~robot_3p} {said} {that}" sorry "excuse me" "what was the question"]
+concept:(interrogative)
+[
+    "[who who's what what's when when's where wheres why how] {are is do} *"
+    "do you know {"how to"} *"
+    "tell me *"
+    "can you *"
+    "are you *"
+    "how much *"
+]               
+################ Sentence Constructs
+concept:(what_is) [whats what's "what is"]
+concept:(may_i) "[can may should] I"
+concept:(can_you) ["can you" "are you able to"]
+concept:(are_you) ["are you" "can you be"]
+concept:(describe) ["what is" what's whats "I ~neg know {what}" "what's that" "what is that" "tell me what" describe]
+concept:(i_would)[I'd Id "I would"]
+concept:(introduce)["[this This] is"
+                    "[these These] are" 
+                    "~i_would like you to meet"
+                    "~i_would like to introduce {"you to"}"
+                    "[My my] name is"
+                    "[I'm i'm "I am" "i am"]"
+                   ]
+
+################# Misc.
+concept:(louder) ["{speak} louder" "[speak volume] up"]
+concept:(quiet) ["{be} [quiet quieter]" "volume down" "shut up"]
+concept:(great) [great excellent fantastic wonderful super awesome radical cool fabulous groovy "super duper" marvelous]
+
+##############  ****** ROBOT concepts ******  #################
+concept:(great_r) ^rand[great excellent fantastic wonderful super awesome radical cool fabulous groovy "super duper" marvelous]
+concept:(very_r) ^rand[pretty very totally quite]
+concept:(repeat_r) ^rand[repeat "say that again" reiterate]
+concept:(thanks_r) ^rand[thanks "thank you" "many thanks"]
+concept:(okay_r) ^rand[okay alright "very well" sure]
+concept:(scary_r) ^rand[scary dangerous frightening]
+concept:(really_r) ^rand[really seriously totally absolutely]
+concept:(funny_r) ^rand[funny amusing silly]
+concept:(absurd_r) ^rand[absurd ludicrous crazy wacky silly ridiculous]
+concept:(pardon_r) ^rand[pardon? "come again?" "what's that?"]
+concept:(sorry_r) ^rand[sorry "I'm sorry"]
+concept:(no_worries_r) ^rand["no worries" "not a problem" "no problem" "~okay_r, no worries"]
+concept:(not_understood_r) ^rand[pardon? "come again?" "what's that?"]
+concept:(not_understood2_r) ^rand[ "~sorry_r, what did you say?"
+                                "~sorry_r, I didn't understand what you said." 
+                                "~sorry_r, what ["do you mean" "was that" "did you say"] ?"
+                                ]
+#concept:(not_understood3_r) ^rand[ "I'm afraid I don't understand."
+                                 #   "~sorry, I don't understand what you just said."
+                                 #   "~sorry. I can't follow what you're saying to me."
+                                 #   "Unfortunately, I can't make sense of what you're telling me."
+                                 #   "I'm a bit confused. Do you mind explaining again?"
+                                 #   "I'm afraid I don't follow"
+                                 #   "Would you mind clarifying what you said?"
+                                 #   "I don't know what you're trying to tell me."
+                                 # ]
+
+concept:(allow_me_r) ["I will" I'll "allow me to" "I can"]
+concept:(yikes_r) ^rand[yikes whoa "oh my" "oh no"]
+concept:(human_r) ^rand[human "dear human" buddy mate "my friend"]
+concept:(certainly_r) ^rand["I certainly can" "yes" "absolutely"]
+concept:(dont_know_answer_r) ^rand["I ^rand{just} don't know ^rand{"the answer to ^rand[that "that question"]"}."
+                                   "I'm not sure."]  
+concept:(hesitate_r) ^rand[^runSound(Aldebaran/enu_ono_hesitation_short_01)
+                           ^runSound(Aldebaran/enu_ono_hesitation_short_02)
+                           ^runSound(Aldebaran/enu_ono_hesitation_short_03)       
+                           ^runSound(Aldebaran/enu_ono_hesitation_short_04)
+                           ^runSound(Aldebaran/enu_ono_hesitation_short_05)
+                           ^runSound(Aldebaran/enu_ono_sigh_resignation_01)
+                           ^runSound(Aldebaran/enu_ono_sigh_resignation_02)
+                           ^runSound(Aldebaran/enu_ono_hum_ok)
+                           ^runSound(Aldebaran/enu_ono_humphh)]
+concept:(greetings_r) ^rand[greetings hello hi hey]

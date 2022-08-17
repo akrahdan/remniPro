@@ -1,0 +1,63 @@
+Boston UTilities And Nothing Else
+=================================
+
+Conversation
+------------
+
+The Conversation class is intended to be used as a context manager for dialog
+interactions. A Conversation manages a single topic which should be loaded the
+conventional way - a floating dialog box :-D.
+
+- Active Conversation :: Only 1 "conversation" can be active (instantiated) at a time.
+
+  - stop :: stop the active Conversation. Call this in onUnload. Static Method.
+
+  - ask :: Ask the user for a single response (via $yield= in qichat) by going
+    to "tag" in the conversation topic. listening is handled
+    automatically. Block until $yield is raised. Return the response as a
+    str. If stop is called while we're blocking we __exit__ the conversation.
+
+  - polar :: (ask variant) Ask a yes / no question. Return the response as a
+    bool. Yield 1, yes, y / 0, no, n for True / False respectively.
+
+  - wait :: (ask variant) Ask a question and wait for a response. We don't care
+    about the response, we just block until there is one.
+
+  - say :: Go to "tag" in the active topic. Block until we're done saying the
+    text.
+
+- @linked :: Decorated function will be a callback to $exec
+
+- unlink :: Destroy all @linked callbacks. Call this in onUnload.
+
+
+Butane
+------
+
+- @boxy :: Decorated function will not be called if stop has been called.
+- stop :: Prevent all calls to @boxy decorated functions
+- start :: Allow all calls to @boxy decorated functions (default)
+- register_as_service :: Registers a class as a service
+- connect_session :: connects a qi Session
+- run_service :: Registers a class as a naoqi service and runs a qi app.
+
+
+Fuel
+----
+Boilerplate class that can be inherited when implementing a new service. It
+includes cmonly needed functionality.
+
+Class Attributes:
+- logger :: Creates a python logger than can be used by the class.
+- package_id :: exctracts the package_id from the behaviour path.
+
+Methods:
+- get_pomise :: retruns a promise and keeps track of it for future cancelling
+- cancell_all_promises :: cancells all promises.
+- error_all_promises :: Sets Error for all promises issues by get_promise
+- connect_signal :: Connects a callback to a signal and keeps track of the
+                    connections.
+- disconnect_all_sisignals :: Disconnects all callbaks connected with
+                              connect_signal.
+- connect_services :: Attemps to connect all services requested in a callback
+                      function within the defined timeout.
